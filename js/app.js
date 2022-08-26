@@ -72,13 +72,15 @@ for (i = 0; i < coll.length; i++) {
 
 // The function that build the nav bar of the webSite 
 function createListItem(){
-    for(section of sections){
-        secName = section.getAttribute('data-nav');
-        secLink = section.getAttribute('id')
+    for(item of items){
 
+        // Function to get the data for the navigation buttons 
+        itemName = item.getAttribute('data-nav');
+        itemLink = item.getAttribute('id')
+        // Creating navigation button method 
         listItem = document.createElement('li');
-        listItem.innerHTML=`<a class = "menu__link" href = "#${secLink}">${secName}</a>`
-
+        listItem.innerHTML=`<a class = "menu__link" href = "#${itemLink}">${itemName}</a>`
+    
         menu.appendChild(listItem)
     }
 }
@@ -88,24 +90,24 @@ function createListItem(){
 
 //The Method to get the position of the section 
 function getViewPort(elem){
-    let sectionPos = elem.getBoundingClientRect()
-    return(sectionPos.y);
+    let sectionYPosition = elem.getBoundingClientRect()
+    return(sectionYPosition.y);
 }
 
 //Check if the section has active class style or not
 function checkActive(){
-    for(section of sections){
-        if(getViewPort(section) >= 0){
-            if(!section.classList.contains("your-active-class")){
-                section.classList.add("your-active-class")} 
+    for(item of items){
+        if(getViewPort(item) >= 0){
+            if(!item.classList.contains("your-active-class")){
+                item.classList.add("your-active-class")} 
         }else{
-            section.classList.remove("your-active-class")
+            item.classList.remove("your-active-class")
         }
     }
 }
 
 // Scroll to anchor ID using scrollTO event
-function scrollToSection(){
+function smoothScroll(){
     document.addEventListener('scroll',checkActive)
 }
 /**
@@ -119,7 +121,7 @@ createListItem();
 
 
 // Scroll to section on link click
-scrollToSection()
+smoothScroll()
 
 // Set sections as active
 checkActive()
