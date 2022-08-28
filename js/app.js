@@ -23,7 +23,7 @@
  * 
  * 
 */
-const sections = Array.from(document.querySelectorAll('section'))
+const items = Array.from(document.querySelectorAll('section'))
 const menu = document.getElementById('navbar__list')
 
 
@@ -73,7 +73,6 @@ for (i = 0; i < coll.length; i++) {
 // The function that build the nav bar of the webSite 
 function createListItem(){
     for(item of items){
-
         // Function to get the data for the navigation buttons 
         itemName = item.getAttribute('data-nav');
         itemLink = item.getAttribute('id')
