@@ -45,7 +45,7 @@ navbar.style.top='0';
 lastScrollTop = scrollTop;
 });
 
-//Collapse the Sections
+//Collapse button of the Sections
 var coll = document.getElementsByClassName("collapsible");
 var i;
 
@@ -76,13 +76,13 @@ function createListItem(){
       // Creating navigation button method 
       listItem = document.createElement('li');
       listItem.innerHTML=`<a class = "menu__link" href = "#${itemLink}">${itemName}</a>`
-      // The buttons created under navbar
+      // The buttons created and the navbar as parent 
       menu.appendChild(listItem)
     })
 }
 
-//The Method to get the position of the section 
-function checkActive (){
+//The Method to get the position of the section and acctive class styles to it 
+function addactiveStyle (){
   items.forEach((item) =>{  
     let sectionTopPosition = item.getBoundingClientRect().top
       if(sectionTopPosition >= 0 && sectionTopPosition < 375 ){
@@ -95,9 +95,9 @@ function checkActive (){
 
 
 
-// Scroll to anchor ID using scrollTO event
-function addActive(){
-    document.addEventListener('scroll',checkActive)
+// Add eventlistner to scroll event to apply styles 
+function addstyle(){
+    document.addEventListener('scroll',addactiveStyle)
 }
 
 /**
@@ -113,6 +113,6 @@ createListItem();
 // Scroll to section on link click
 
 // Set sections as active
-addActive()
+addstyle()
 
 
