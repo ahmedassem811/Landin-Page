@@ -23,10 +23,8 @@
  * 
  * 
 */
-const items = Array.from(document.querySelectorAll('section'))
-const menu = document.getElementById('navbar__list')
-
-
+const items = Array.from(document.querySelectorAll('section'));
+const menu = document.getElementById('navbar__list');
 /**
  * End Global Variables
  * Start Helper Functions
@@ -69,46 +67,39 @@ for (i = 0; i < coll.length; i++) {
 */
 
 // build the nav
-
 // The function that build the nav bar of the webSite 
 function createListItem(){
-    for(item of items){
-        // Function to get the data for the navigation buttons 
-        itemName = item.getAttribute('data-nav');
-        itemLink = item.getAttribute('id')
-        // Creating navigation button method 
-        listItem = document.createElement('li');
-        listItem.innerHTML=`<a class = "menu__link" href = "#${itemLink}">${itemName}</a>`
-    
-        menu.appendChild(listItem)
-    }
+    items.forEach(item => {
+      // Function to get the data for the navigation buttons 
+      itemName = item.getAttribute('data-nav');
+      itemLink = item.getAttribute('id')
+      // Creating navigation button method 
+      listItem = document.createElement('li');
+      listItem.innerHTML=`<a class = "menu__link" href = "#${itemLink}">${itemName}</a>`
+      // The buttons created under navbar
+      menu.appendChild(listItem)
+    })
 }
-
-
-// Add class 'active' to section when near top of viewport
 
 //The Method to get the position of the section 
-function getViewPort(elem){
-    let sectionYPosition = elem.getBoundingClientRect()
-    return(sectionYPosition.y);
+function checkActive (){
+  items.forEach((item) =>{  
+    let sectionTopPosition = item.getBoundingClientRect().top
+      if(sectionTopPosition >= 0 && sectionTopPosition < 375 ){
+        item.classList.add("your-active-class")
+      }else{
+        item.classList.remove("your-active-class")
+      }
+    })
 }
 
-//Check if the section has active class style or not
-function checkActive(){
-    for(item of items){
-        if(getViewPort(item) >= 0){
-            if(!item.classList.contains("your-active-class")){
-                item.classList.add("your-active-class")} 
-        }else{
-            item.classList.remove("your-active-class")
-        }
-    }
-}
+
 
 // Scroll to anchor ID using scrollTO event
 function smoothScroll(){
     document.addEventListener('scroll',checkActive)
 }
+
 /**
  * End Main Functions
  * Begin Events
