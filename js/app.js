@@ -96,7 +96,7 @@ function checkActive (){
 
 
 // Scroll to anchor ID using scrollTO event
-function smoothScroll(){
+function addActive(){
     document.addEventListener('scroll',checkActive)
 }
 
@@ -111,9 +111,8 @@ createListItem();
 
 
 // Scroll to section on link click
-smoothScroll()
 
 // Set sections as active
-checkActive()
+addActive()
 
 
