@@ -75,9 +75,16 @@ function createListItem(){
       itemLink = item.getAttribute('id')
       // Creating navigation button method 
       listItem = document.createElement('li');
-      listItem.innerHTML=`<a class = "menu__link" href = "#${itemLink}">${itemName}</a>`
+      listItem.innerHTML=`<a class = "menu__link" href ="#${itemLink}">${itemName}</a>`
       // The buttons created and the navbar as parent 
       menu.appendChild(listItem)
+      //Add Event listnet for each link created when click on it scroll to relted section smoothly 
+      listItem.addEventListener('click', function (e){
+        e.preventDefault();
+        item.scrollIntoView({
+          behavior: "smooth"
+        })
+      })
     })
 }
 
@@ -97,7 +104,8 @@ function addactiveStyle (){
 
 // Add eventlistner to scroll event to apply styles 
 function addstyle(){
-    document.addEventListener('scroll',addactiveStyle)
+    document.addEventListener('scroll',
+    addactiveStyle)
 }
 
 /**
