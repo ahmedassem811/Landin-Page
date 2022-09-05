@@ -32,27 +32,27 @@ const menu = document.getElementById('navbar__list');
 */
 
 /* When the user scrolls down, hide the navbar. When the user scrolls up, show the navbar */
-var lastScrollTop;
+let lastScrollTop;
 navbar = document.getElementById('navbar__list');
 window.addEventListener('scroll',function(){
-var scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
 if(scrollTop > lastScrollTop){
-navbar.style.top='-80px';
+  navbar.style.top='-80px';
 }
 else{
-navbar.style.top='0';
+  navbar.style.top='0';
 }
-lastScrollTop = scrollTop;
+  lastScrollTop = scrollTop;
 });
 
 //Collapse button of the Sections
-var coll = document.getElementsByClassName("collapsible");
-var i;
+let coll = document.getElementsByClassName("collapsible");
+let i;
 
 for (i = 0; i < coll.length; i++) {
   coll[i].addEventListener("click", function() {
     this.classList.toggle("active");
-    var content = this.nextElementSibling;
+    let content = this.nextElementSibling;
     if (content.style.display === "block") {
       content.style.display = "none";
     } else {
