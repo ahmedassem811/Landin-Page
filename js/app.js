@@ -108,6 +108,16 @@ function addstyle(){
     addactiveStyle)
 }
 
+$(document).ready(function() {
+  $("#navbar__list > li > a").click(function(){
+      $("#navbar__list > li > a").each(function(){
+          $(this).removeClass("highlighted");
+      });
+      $(this).addClass('highlighted');
+  });
+});
+
+
 /**
  * End Main Functions
  * Begin Events
