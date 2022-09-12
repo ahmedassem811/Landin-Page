@@ -108,15 +108,6 @@ function addstyle(){
     addactiveStyle)
 }
 
-$(document).ready(function() {
-  $("#navbar__list > li > a").click(function(){
-      $("#navbar__list > li > a").each(function(){
-          $(this).removeClass("highlighted");
-      });
-      $(this).addClass('highlighted');
-  });
-});
-
 
 /**
  * End Main Functions
@@ -133,4 +124,49 @@ createListItem();
 // Set sections as active
 addstyle()
 
+//Make Nav Active when Clicked and scrolls down to section
+document.addEventListener("click", function(event) {
+  let active = document.querySelector(".menu__link.active");
+  if (active) active.classList.remove("active");
+  if (event.target.classList.contains("menu__link")) {
+    event.target.classList.add("active");
+    window.location.href = "#section" + event.target.id;
+  }
+});
 
+const topMenuHeight = topMenu.offsetTop + 1;
+const menuItems = document.querySelectorAll(".menu__link");
+const scrollItems = document.querySelectorAll("section");
+
+// Bind to scroll
+window.addEventListener("scroll", function() {
+  // Get container scroll position
+  const mainHeroHeight = document.querySelector(".main__hero").offsetTop;
+  console.log(mainHeroHeight);
+  let fromTop = window.pageYOffset + topMenuHeight + mainHeroHeight;
+  // Get id of current scroll item
+  let cur = [];
+
+  [...scrollItems].map(function(item) {
+    //debugger;
+    if (item.offsetTop < fromTop) {
+      cur.push(item);
+    }
+  });
+
+  // Get the id of the current element
+  //debugger;
+  cur = cur[cur.length - 1];
+  let id = cur ? cur.id : "";
+
+  if (lastId !== id) {
+    lastId = id;
+
+    menuItems.forEach(function(elem, index) {
+      elem.classList.remove("active");
+      // Look at the child "a" tags and try to find the one for our section
+      const filteredItems = [...menuItems].filter(elem => elem.children[0].getAttribute("href") === `#${id}`);
+      filteredItems[0].classList.add("active");
+    });
+  }
+});

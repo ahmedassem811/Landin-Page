@@ -22,4 +22,3 @@ This page is a prctice example on the course , it's very usful way to test your 
 * HTML 
 * CSS
 * javaScript
-* Jquery

@@ -81,7 +81,7 @@ section {
   
   /* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
   .active, .collapsible:hover {
-    background-color: #ccc;
+    background-color: rgb(237, 11, 11);
   }
 
   .collapsible:after {
@@ -122,8 +122,19 @@ section {
     padding: 1em;
     font-weight: bold;
     text-decoration: none;
-    color: rgb(255, 255, 255);
+    color: rgb(3, 42, 87);
 }
+
+.navbar__menu .menu-list.active {
+    background-color: #333;
+  }
+
+  .navbar__menu .menu-list.active a,
+  .navbar__menu .menu-list.active a:link {
+    color: greenyellow;
+    text-decoration: none;
+    background-color: blue;
+  }
 
 .navbar__menu .menu__link:hover {
     background: rgb(238, 4, 16);
@@ -132,9 +143,9 @@ section {
 }
 
 .highlighted {
-    background: rgb(84, 3, 246);
+    background: rgb(104, 246, 3);
     color: rgb(71, 8, 243);
-    transition: ease 0.3s all;
+    transition: ease 0.10s all;
 }
 
 /* Header Styles */
