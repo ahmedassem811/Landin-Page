@@ -81,7 +81,8 @@ section {
   
   /* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
   .active, .collapsible:hover {
-    background-color: rgb(237, 11, 11);
+    background-color: rgb(3, 51, 118);
+    color: aliceblue !important;
   }
 
   .collapsible:after {
@@ -98,7 +99,7 @@ section {
 
 
 .navbar__menu ul {
-    background-color: rgb(226, 93, 11); /* Black background color */
+    background-color: #cc1; /* Black background color */
     position: fixed; /* Make it stick/fixed */
     top: 0; /* Stay on top */
     width: 100%; /* Full width */

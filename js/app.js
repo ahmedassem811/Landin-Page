@@ -25,6 +25,7 @@
 */
 const items = Array.from(document.querySelectorAll('section'));
 const menu = document.getElementById('navbar__list');
+const topMenu = document.getElementById('navbar__list');
 /**
  * End Global Variables
  * Start Helper Functions
@@ -133,7 +134,6 @@ document.addEventListener("click", function(event) {
     window.location.href = "#section" + event.target.id;
   }
 });
-
 const topMenuHeight = topMenu.offsetTop + 1;
 const menuItems = document.querySelectorAll(".menu__link");
 const scrollItems = document.querySelectorAll("section");
@@ -153,20 +153,4 @@ window.addEventListener("scroll", function() {
       cur.push(item);
     }
   });
-
-  // Get the id of the current element
-  //debugger;
-  cur = cur[cur.length - 1];
-  let id = cur ? cur.id : "";
-
-  if (lastId !== id) {
-    lastId = id;
-
-    menuItems.forEach(function(elem, index) {
-      elem.classList.remove("active");
-      // Look at the child "a" tags and try to find the one for our section
-      const filteredItems = [...menuItems].filter(elem => elem.children[0].getAttribute("href") === `#${id}`);
-      filteredItems[0].classList.add("active");
-    });
-  }
 });
